@@ -1,0 +1,44 @@
+1. Testing for Create
+
+$ curl -X POST -H "Content-Type: application/json" \
+-d '{"name": "linuxize", "email": "linuxize@example.com"}'  \
+   http://0.0.0.0:3200/json/ms
+
+
+2. Testing for Read
+
+$ curl http://0.0.0.0:3200/json | jq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   104  100   104    0     0  26000      0 --:--:-- --:--:-- --:--:-- 26000
+{
+  "colors": {
+    "b": "blue",
+    "g": "green",
+    "r": "red"
+  },
+  "languages": {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French"
+  }
+}
+
+
+3. Testing for Update
+
+$> curl -X PUT -H "Content-Type: application/json" \
+-d '{ "new" : "Azure" }' \
+ http://0.0.0.0:3200/json/clouds/MICROSOFT
+
+OUTPUT ==>
+{"res":{"AMAZON":"AWS","IBM":"IBM CLOUD","MICROSOFT":"Azure"}}
+
+
+
+4. Testing for Delete
+
+$ curl -X DELETE http://0.0.0.0:3200/json/clouds
+
+OUTPUT ==> 
+{"colors":{"b":"blue","g":"green","r":"red"},"languages":{"en":"English","es":"Spanish","fr":"French"}}
